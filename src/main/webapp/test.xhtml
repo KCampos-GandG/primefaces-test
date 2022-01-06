@@ -13,7 +13,37 @@
 
         <h1>#{testView.string}</h1>
         <h:form id="frmTest">
-            
+            <p:dataView id="dvProductos"
+                        var="product"
+                        widgetVar="dvProductos"
+                        value="#{testView.lazyModel}"
+                        gridRowStyleClass="col-12 md:col-6 lg:col-4"
+                        rows="12"
+                        lazy="true"
+                        layout="grid"
+                        paginator="true"
+                        currentPageReportTemplate="{endRecord} de {totalRecords} resultados">
+                <p:dataViewGridItem>
+                    <div class="card">
+                        <div class="p-2 grid justify-content-between">
+                            #{product.id}
+                        </div>
+                        <div class="p-2 grid justify-content-between">
+                            #{product.name}
+                        </div>
+                        <p:outputPanel deferred="true" class="p-mt-2">
+                            <p:ajax event="load" listener="#{testView.getCargarImagen(product.path)}"/>
+                            <f:facet name="loading">
+                                <p:skeleton width="100%" height="300px"/>
+                            </f:facet>
+                            <p:graphicImage value="#{testView.imagen}"
+                                            stream="false"
+                                            height="200"
+                                            width="100%"/>
+                        </p:outputPanel>
+                    </div>
+                </p:dataViewGridItem>
+            </p:dataView>
         </h:form>
 
     </h:body>
