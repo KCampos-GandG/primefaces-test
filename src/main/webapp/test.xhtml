@@ -7,14 +7,9 @@
     <h:outputScript name="test.js" />
 </h:head>
 <h:body>
-    <h1>#{testView.string}</h1>
     <div class="card">
         <h:form>
-            <h5 class="p-mt-0">AJAX</h5>
-            <p:commandButton action="#{testView.throwViewExpiredException}" ajax="true"
-                value="Throw ViewExpiredException!" styleClass="p-mr-2" />
-            <p:ajaxExceptionHandler rendered="true" type="javax.faces.application.ViewExpiredException"
-                onexception="alert('ViewExpiredException')" />
+            <h1>#{testView.string}</h1>
         </h:form>
     </div>
 </h:body>
