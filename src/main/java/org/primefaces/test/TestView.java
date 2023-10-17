@@ -42,9 +42,9 @@ public class TestView {
                 .build();
         firstSubmenu.getElements().add(item);
         model.getElements().add(firstSubmenu);
-        
+
     }
-    
+
     public void delete() {
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_WARN, "Delete", "Data deleted");
         FacesContext.getCurrentInstance().addMessage(null, message);
