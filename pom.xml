@@ -36,7 +36,6 @@
             <artifactId>primefaces</artifactId>
             <version>13.0.2</version>
         </dependency>
-
         <!-- javax.* APIs -->
         <dependency>
             <groupId>org.apache.geronimo.specs</groupId>
