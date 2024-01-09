@@ -16,12 +16,16 @@
     <h:body>
 
         <h1>#{testView.string}</h1>
-        <h:form id="frmTest">
-            <!-- Cambio de tema automatico--> 
-            <pe:lightSwitch selected="#{identidad.temaSeleccionado}"
-                            light="saga"
-                            dark="arya"
-                            automatic="true"/>
+        <h:form enctype="multipart/form-data">
+            <p:growl id="growl" showDetail="true" />
+            <p:fileUpload value="#{testView.files}" 
+                          mode="simple" 
+                          chooseButtonTitle="Seleccionar"
+                          skinSimple="true" 
+                          multiple="true"/>
+            <p:commandButton value="Submit" 
+                             action="#{testView.uploadMultiple}" 
+                             styleClass="mt-3 ui-button-outlined block"/>
         </h:form>
     </h:body>
 

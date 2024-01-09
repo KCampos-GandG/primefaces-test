@@ -1,48 +1,28 @@
 package org.primefaces.test;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.application.ViewExpiredException;
-import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
 import lombok.Data;
-import org.primefaces.model.menu.DefaultMenuItem;
-import org.primefaces.model.menu.DefaultMenuModel;
-import org.primefaces.model.menu.DefaultSubMenu;
-import org.primefaces.model.menu.MenuModel;
+import org.primefaces.model.file.UploadedFile;
+import org.primefaces.model.file.UploadedFiles;
 
 @Data
 @Named
-@RequestScoped
-public class TestView {
+@ViewScoped
+public class TestView implements Serializable{
 
-    private MenuModel model;
     private String string;
+    private UploadedFiles files;
 
     @PostConstruct
     public void init() {
         string = "PrimeFaces";
-        model = new DefaultMenuModel();
-        DefaultSubMenu firstSubmenu = DefaultSubMenu.builder()
-                .label("Options")
-                .build();
-        DefaultMenuItem item = DefaultMenuItem.builder()
-                .value("Delete")
-                .icon("pi pi-times")
-                .command("#{testView.delete}")
-                .build();
-        firstSubmenu.getElements().add(item);
-        model.getElements().add(firstSubmenu);
-
     }
 
     public void delete() {
@@ -53,6 +33,15 @@ public class TestView {
     public void throwViewExpiredException() {
         throw new ViewExpiredException("A ViewExpiredException!",
                 FacesContext.getCurrentInstance().getViewRoot().getViewId());
+    }
+    
+    public void uploadMultiple() {
+        if (files != null) {
+            for (UploadedFile f : files.getFiles()) {
+                FacesMessage message = new FacesMessage("Successful", f.getFileName() + " is uploaded.");
+                FacesContext.getCurrentInstance().addMessage(null, message);
+            }
+        }
     }
 
 }
