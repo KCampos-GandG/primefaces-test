@@ -15,7 +15,7 @@
 
     <context-param>
         <param-name>primefaces.THEME</param-name>
-        <param-value>saga</param-value>
+        <param-value>#{empty identidad ? 'saga' : identidad.temaSeleccionado}</param-value>
     </context-param>
 
     <!-- Enable PostConstruct on JSF ManagedBeans on Jetty -->
@@ -66,7 +66,7 @@
         <extension>eot</extension>
         <mime-type>application/vnd.ms-fontobject</mime-type>
     </mime-mapping>
-        <mime-mapping>
+    <mime-mapping>
         <extension>eot?#iefix</extension>
         <mime-type>application/vnd.ms-fontobject</mime-type>
     </mime-mapping>
@@ -82,7 +82,7 @@
         <extension>svg#latoblack</extension>
         <mime-type>image/svg+xml</mime-type>
     </mime-mapping>
-        <mime-mapping>
+    <mime-mapping>
         <extension>svg#latolight</extension>
         <mime-type>image/svg+xml</mime-type>
     </mime-mapping>
