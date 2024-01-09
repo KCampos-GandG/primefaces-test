@@ -1,12 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-      xmlns:jsf="http://xmlns.jcp.org/jsf"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui"
-      xmlns:pe="http://primefaces.org/ui/extensions">
+      xmlns:p="http://primefaces.org/ui">
 
     <h:head>
         <title>PrimeFaces Test</title>
@@ -17,7 +12,6 @@
 
         <h1>#{testView.string}</h1>
         <h:form enctype="multipart/form-data">
-            <p:growl id="growl" showDetail="true" />
             <p:fileUpload value="#{testView.files}" 
                           mode="simple" 
                           chooseButtonTitle="Seleccionar"
